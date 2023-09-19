@@ -1,4 +1,4 @@
-package com.projectweek2.PROJECT_WEEK_2;
+package com.projectweek2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
