@@ -57,4 +57,31 @@ public class BbddInMemory {
         }
     }
 
+    public static Car findById(int id){
+        for(Car car: listOfCars){
+            if(id == car.getId()){
+                return car;
+            }
+        }
+        return null;
+    }
+
+    public static void updateCar(Car updatedCar) {
+
+        Car existingCar = findById(updatedCar.getId());
+
+        if (existingCar != null) {
+            // Actualizar los campos del automóvil existente con los datos del automóvil actualizado
+            existingCar.setBrand(updatedCar.getBrand());
+            existingCar.setModel(updatedCar.getModel());
+            existingCar.setPrice(updatedCar.getPrice());
+            existingCar.setMotorType(updatedCar.getMotorType());
+            existingCar.setHorsePower(updatedCar.getHorsePower());
+
+            // Guardar los cambios en la base de datos
+            BbddInMemory.saveCar(existingCar);
+        }
+
+    }
+
 }
