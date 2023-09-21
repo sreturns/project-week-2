@@ -14,10 +14,10 @@ import com.projectweek2.repositories.BbddInMemory;
 @RequestMapping("/")
 public class MainPageController {
 
+private static List<Car> listOfCars = BbddInMemory.getListOfVehicles();
+
 	@GetMapping
 	public String mainPageView(Model model) {
-		List<Car> listOfCars = BbddInMemory.getListOfVehicles();
-
 		model.addAttribute("listOfCars", listOfCars);
 		return "index.html";
 	}

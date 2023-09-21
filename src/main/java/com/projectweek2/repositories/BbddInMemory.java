@@ -2,6 +2,7 @@ package com.projectweek2.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.projectweek2.model.Car;
 
@@ -10,7 +11,7 @@ public class BbddInMemory {
     private BbddInMemory() {
     }
 
-    private static List<Car> listOfVehicles = getListOfVehiclesData();
+    private static List<Car> listOfCars = getListOfVehiclesData();
 
     /**
      * Generamos una lista con vehiculos, de tipo Car, Motorcycle y Bicycle
@@ -26,19 +27,34 @@ public class BbddInMemory {
         Car car6 = new Car("Cupra", "Rebel", 40_000, 250, "Fuel");
         Car car7 = new Car("Ferrari", "Roma", 300_000, 800, "Hybrid");
 
-        list.add( car1);
-        list.add( car2);
-        list.add( car3);
-        list.add( car4);
-        list.add( car5);
-        list.add( car6);
-        list.add( car7);
+        list.add(car1);
+        list.add(car2);
+        list.add(car3);
+        list.add(car4);
+        list.add(car5);
+        list.add(car6);
+        list.add(car7);
 
         return list;
     }
 
     public static List<Car> getListOfVehicles() {
-        return listOfVehicles;
+        return listOfCars;
+    }
+
+    public static void saveCar(Car car) {
+        car.setId(Car.getCount());
+        Car.setCount(car.getId() + 1);
+        listOfCars.add(car);
+    }
+
+    public static void deleteCar(int id){
+       Optional<Car> carToRemove = listOfCars.stream().filter(car -> car.getId() == id).findFirst();
+
+        if (carToRemove.isPresent()) {
+            // Si se encuentra el coche, elimínalo de la lista
+            listOfCars.remove(carToRemove.get());
+        }
     }
 
 }

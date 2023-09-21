@@ -51,15 +51,15 @@
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                             <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                 aria-current="page">DealerShip</a>
-                            <a th:href="@{/addVehicle}"
+                            <a th:href="@{/cars/addCar}"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Add
-                                Vehicle</a>
+                                Car</a>
                             <a href="#"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Update
-                                Vehicle</a>
+                                Car</a>
                             <a href="#"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Delete
-                                Vehicle</a>
+                                Car</a>
                         </div>
                     </div>
                 </div>
@@ -96,20 +96,24 @@
             </div>
         </div>
     </nav>
-    <div class="bg-white" >
-        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8" >
-          <h2 class="sr-only">Products</h2>
-          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            <a href="#" class="group"  th:each="car: ${listOfCars}">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-gray-700" th:text="${car.brand + ' ' + car.model}"></h3>
-              <p class="mt-1 text-lg font-medium text-gray-900" th:text="${car.price}"></p>
-            </a>
-          </div>
+    <h2 class="sr-only">Products</h2>
+    <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                <div class="group" th:each="car: ${listOfCars}">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img th:src="@{/car_.jpg}" alt="Car Image"
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700" th:text="${car.brand + ' ' + car.model}"></h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900" th:text="${car.price}"></p>
+                    <a class="text-red-600 hover:text-red-800" th:href="@{/cars/delete/{id}(id=${car.id})}">Delete</a>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+    </div>
 </body>
 
 </html>
