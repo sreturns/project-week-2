@@ -5,7 +5,4 @@ import org.springframework.stereotype.Repository;
 
 import com.projectweek2.model.Car;
 
-@Repository
-public interface CarRepository extends JpaRepository<Car, Long> {
 
-}
