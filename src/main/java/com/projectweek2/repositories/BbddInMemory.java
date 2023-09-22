@@ -14,7 +14,14 @@ public class BbddInMemory {
     private static List<Car> listOfCars = getListOfVehiclesData();
 
     /**
-     * Generamos una lista con vehiculos, de tipo Car, Motorcycle y Bicycle
+     * Generamos una lista con vehiculos para trabajar con ella durante la ejecucion
+     * de la aplicacion
+     * 
+     * @see com.projectweek2.model.Car
+     * @see com.projectweek2.repositories.BbddInMemory
+     * @see com.projectweek2.controllers.MainPageController
+     * @see com.projectweek2.controllers.ApiCarController
+     * @see com.projectweek2.controllers.CarController
      */
     private static List<Car> getListOfVehiclesData() {
         ArrayList<Car> list = new ArrayList<>();
@@ -42,21 +49,38 @@ public class BbddInMemory {
         return listOfCars;
     }
 
+    /**
+     * Guardamos un coche en la BBDD y gestionamos el recuento del id
+     * 
+     * @param car
+     */
     public static void saveCar(Car car) {
         car.setId(Car.getCount()); // Establece el ID usando el valor actual de getCount()
         listOfCars.add(car);
         Car.setCount(Car.getCount() + 1); // Incrementa el contador después de guardar el coche
     }
 
+    /**
+     * Hacemos delete de un coche a traves de su id
+     * 
+     * @param id
+     */
     public static void deleteCar(int id) {
+        // Buscamos el coche a traves del id
         Optional<Car> carToRemove = listOfCars.stream().filter(car -> car.getId() == id).findFirst();
 
         if (carToRemove.isPresent()) {
-            // Si se encuentra el coche, elimínalo de la lista
+            // Si se encuentra el coche, lo eliminamos de la lista
             listOfCars.remove(carToRemove.get());
         }
     }
 
+    /**
+     * Buscamos un coche a traves de su id y lo devolvemos
+     * 
+     * @param id
+     * @return car
+     */
     public static Car findById(int id) {
         for (Car car : listOfCars) {
             if (id == car.getId()) {
@@ -66,6 +90,11 @@ public class BbddInMemory {
         return null;
     }
 
+    /**
+     * Si encontramos el id del coche, lo actualizamos con los parametros nuevos
+     * 
+     * @param updatedCar
+     */
     public static void updateCar(Car updatedCar) {
 
         Car existingCar = findById(updatedCar.getId());
@@ -82,6 +111,9 @@ public class BbddInMemory {
         }
     }
 
+    /**
+     * Devolvemos el tamaño de la lista
+     */
     public static int getListSize() {
         return listOfCars.size();
     }

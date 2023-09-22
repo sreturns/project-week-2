@@ -2,6 +2,13 @@ package com.projectweek2.model;
 
 import java.util.Objects;
 
+/**
+ * Entidad coche
+ * 
+ * @see com.projectweek2.controllers.CarController
+ * @see com.projectweek2.controllers.ApiCarController
+ * @see com.projectweek2.repositories.BbddInMemory
+ */
 public class Car {
 
     private static int count = 0;
@@ -16,6 +23,14 @@ public class Car {
     public Car() {
     }
 
+    /**
+     * 
+     * @param brand
+     * @param model
+     * @param price
+     * @param horsePower
+     * @param motorType
+     */
     public Car(String brand, String model, int price, int horsePower, String motorType) {
         this.brand = brand;
         this.model = model;
@@ -26,6 +41,11 @@ public class Car {
         count++;
     }
 
+    /**
+     * Definimos nuestro metodo equals para comparar los coches
+     * 
+     * @param obj
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

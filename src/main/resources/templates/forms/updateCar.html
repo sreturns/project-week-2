@@ -54,12 +54,6 @@
                             <a class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                 aria-current="page">Add
                                 Car</a>
-                            <a href="#"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Update
-                                Car</a>
-                            <a href="#"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Delete
-                                Car</a>
                         </div>
                     </div>
                 </div>
@@ -87,12 +81,6 @@
                 <a href="#"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Add
                     new Vehicle</a>
-                <a href="#"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Update
-                    Vehicle</a>
-                <a href="#"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Delete
-                    Vehicle</a>
             </div>
         </div>
     </nav>
@@ -101,31 +89,42 @@
     <div class="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
         <h2 class="text-2xl font-semibold text-gray-800">Update Car</h2>
         <form th:action="@{/cars/update/save}" th:object="${car}" method="post">
-          <input type="hidden" th:field="*{id}" />
-      
-          <div class="mb-4">
-            <label for="brand" class="block text-sm font-medium text-gray-700">Brand:</label>
-            <input type="text" th:field="*{brand}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ejemplo: Toyota">
-          </div>
-          <div class="mb-4">
-            <label for="model" class="block text-sm font-medium text-gray-700">Model:</label>
-            <input type="text" th:field="*{model}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ejemplo: Corolla">
-          </div>
-          <div class="mb-4">
-            <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
-            <input type="number" th:field="*{price}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ejemplo: 25000">
-          </div>
-          <div class="mb-4">
-            <label for="motor" class="block text-sm font-medium text-gray-700">Motor:</label>
-            <input type="text" th:field="*{motorType}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ejemplo: 2.0L Inline-4">
-          </div>
-          <div class="mb-4">
-            <label for="horsepower" class="block text-sm font-medium text-gray-700">Potency (HP):</label>
-            <input type="number" th:field="*{horsePower}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ejemplo: 180">
-          </div>
-          <div class="mt-6">
-            <button type="submit" class="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">Guardar Cambios</button>
-          </div>
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="mb-4">
+                <label for="brand" class="block text-sm font-medium text-gray-700">Brand:</label>
+                <input type="text" th:field="*{brand}"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder="Ejemplo: Toyota">
+            </div>
+            <div class="mb-4">
+                <label for="model" class="block text-sm font-medium text-gray-700">Model:</label>
+                <input type="text" th:field="*{model}"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder="Ejemplo: Corolla">
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
+                <input type="number" th:field="*{price}"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder="Ejemplo: 25000">
+            </div>
+            <div class="mb-4">
+                <label for="motor" class="block text-sm font-medium text-gray-700">Motor:</label>
+                <input type="text" th:field="*{motorType}"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder="Ejemplo: 2.0L Inline-4">
+            </div>
+            <div class="mb-4">
+                <label for="horsepower" class="block text-sm font-medium text-gray-700">Potency (HP):</label>
+                <input type="number" th:field="*{horsePower}"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder="Ejemplo: 180">
+            </div>
+            <div class="mt-6">
+                <button type="submit"
+                    class="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50">Save
+                    Changes</button>
+            </div>
         </form>
-      </div>
-      
+    </div>

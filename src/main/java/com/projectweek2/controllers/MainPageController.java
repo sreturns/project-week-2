@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.projectweek2.model.Car;
 import com.projectweek2.repositories.BbddInMemory;
 
+/**
+ * Controlador Main que muestra la lista de coche en la vista principal
+ * 
+ * @see com.projectweek2.controllers.CarController
+ * @see com.projectweek2.repositories.BbddInMemory
+ */
 @Controller
 @RequestMapping("/")
 public class MainPageController {
