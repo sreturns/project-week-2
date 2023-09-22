@@ -12,6 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.projectweek2.model.Car;
 import com.projectweek2.repositories.BbddInMemory;
 
+/**
+ * La clase para realizar los test a nuestra principales funciones
+ */
 @SpringBootTest
 class ProjectWeek2ApplicationTests {
 
@@ -21,7 +24,10 @@ class ProjectWeek2ApplicationTests {
 		BbddInMemory.getListOfVehicles().clear();
 	}
 
-
+	/**
+	 * Nos aseguramos de que cuando guardamos un coche en la lista, debe tener un tamaño de 1
+	 * ademas el coche guardado debe ser igual al de la lista
+	 */
 	@Test
 	public void testSaveCar() {
 		Car carToSave = new Car("Toyota", "Corolla", 25000, 150, "Gasoline");

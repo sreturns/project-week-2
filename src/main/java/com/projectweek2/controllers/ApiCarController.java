@@ -2,6 +2,9 @@ package com.projectweek2.controllers;
 
 import java.util.List;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,8 +51,11 @@ public class ApiCarController {
      * Post
      */
     @PostMapping("/add")
-    public void addCar(@RequestBody Car car) {
+    public ResponseEntity<Car> addCar(@RequestBody Car car) {
+
         BbddInMemory.saveCar(car);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(car);
     }
 
     /**
