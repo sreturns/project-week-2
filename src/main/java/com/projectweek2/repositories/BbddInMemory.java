@@ -81,4 +81,8 @@ public class BbddInMemory {
             existingCar.setHorsePower(updatedCar.getHorsePower());
         }
     }
+
+    public static int getListSize() {
+        return listOfCars.size();
+    }
 }

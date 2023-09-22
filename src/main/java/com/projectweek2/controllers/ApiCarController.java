@@ -45,4 +45,9 @@ public class ApiCarController {
         BbddInMemory.deleteCar(id);
     }
 
+    @GetMapping("/size")
+    public int getListOfCarsSize() {
+        return BbddInMemory.getListSize();
+    }
+
 }

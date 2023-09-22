@@ -53,4 +53,20 @@ class ProjectWeek2ApplicationTests {
 		assertEquals(carToFind, foundCar); // El coche encontrado debe ser igual al coche guardado
 	}
 
+    @Test
+    public void testUpdateCar() {
+        Car carToUpdate = new Car("Toyota", "Corolla", 25000, 150, "Gasoline");
+        BbddInMemory.saveCar(carToUpdate);
+        int carId = carToUpdate.getId();
+
+        Car updatedCar = new Car("Honda", "Civic", 28000, 170, "Gasoline");
+        updatedCar.setId(carId);
+
+        BbddInMemory.updateCar(updatedCar);
+
+        Car foundCar = BbddInMemory.findById(carId);
+        assertNotNull(foundCar);
+        assertEquals(updatedCar, foundCar); // El coche encontrado debe ser igual al coche actualizado
+    }
+
 }
