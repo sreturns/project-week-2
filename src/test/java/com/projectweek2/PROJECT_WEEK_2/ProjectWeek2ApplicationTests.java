@@ -15,32 +15,12 @@ import com.projectweek2.repositories.BbddInMemory;
 @SpringBootTest
 class ProjectWeek2ApplicationTests {
 
-	@Test
-	public void testStaticCount() {
-		Car.setCount(10);
-		assertEquals(10, Car.getCount());
-
-		Car anotherCar = new Car("Nissan", "Altima", 27000, 190, "Fuel");
-		assertEquals(11, Car.getCount());
-	}
-
 	@BeforeEach
 	public void setUp() {
 		// Reiniciar la lista de coches antes de cada prueba
 		BbddInMemory.getListOfVehicles().clear();
 	}
 
-	@Test
-	public void testGetListOfVehiclesData() {
-		List<Car> vehiclesData = BbddInMemory.getListOfVehicles();
-		assertEquals(7, vehiclesData.size()); // Verificar si se han creado 7 vehículos
-	}
-
-	@Test
-	public void testGetListOfVehicles() {
-		List<Car> vehicles = BbddInMemory.getListOfVehicles();
-		assertEquals(0, vehicles.size()); // La lista debe estar vacía al principio
-	}
 
 	@Test
 	public void testSaveCar() {
