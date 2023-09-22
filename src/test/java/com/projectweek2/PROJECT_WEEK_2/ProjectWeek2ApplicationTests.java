@@ -32,7 +32,7 @@ class ProjectWeek2ApplicationTests {
 
 	@Test
 	public void testGetListOfVehiclesData() {
-		List<Car> vehiclesData = BbddInMemory.getListOfVehiclesData();
+		List<Car> vehiclesData = BbddInMemory.getListOfVehicles();
 		assertEquals(7, vehiclesData.size()); // Verificar si se han creado 7 vehículos
 	}
 

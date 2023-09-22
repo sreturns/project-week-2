@@ -16,7 +16,7 @@ public class BbddInMemory {
     /**
      * Generamos una lista con vehiculos, de tipo Car, Motorcycle y Bicycle
      */
-    public static List<Car> getListOfVehiclesData() {
+    private static List<Car> getListOfVehiclesData() {
         ArrayList<Car> list = new ArrayList<>();
 
         Car car1 = new Car("Tesla", "S", 80_000, 500, "Electric");
@@ -43,13 +43,13 @@ public class BbddInMemory {
     }
 
     public static void saveCar(Car car) {
-        car.setId(Car.getCount());
-        Car.setCount(car.getId() + 1);
+        car.setId(Car.getCount()); // Establece el ID usando el valor actual de getCount()
         listOfCars.add(car);
+        Car.setCount(Car.getCount() + 1); // Incrementa el contador después de guardar el coche
     }
 
-    public static void deleteCar(int id){
-       Optional<Car> carToRemove = listOfCars.stream().filter(car -> car.getId() == id).findFirst();
+    public static void deleteCar(int id) {
+        Optional<Car> carToRemove = listOfCars.stream().filter(car -> car.getId() == id).findFirst();
 
         if (carToRemove.isPresent()) {
             // Si se encuentra el coche, elimínalo de la lista
@@ -57,9 +57,9 @@ public class BbddInMemory {
         }
     }
 
-    public static Car findById(int id){
-        for(Car car: listOfCars){
-            if(id == car.getId()){
+    public static Car findById(int id) {
+        for (Car car : listOfCars) {
+            if (id == car.getId()) {
                 return car;
             }
         }
@@ -71,17 +71,14 @@ public class BbddInMemory {
         Car existingCar = findById(updatedCar.getId());
 
         if (existingCar != null) {
-            // Actualizar los campos del automóvil existente con los datos del automóvil actualizado
+            // Actualizar los campos del coche existente con los datos del coche
+            // actualizado
+            existingCar.setId(updatedCar.getId());
             existingCar.setBrand(updatedCar.getBrand());
             existingCar.setModel(updatedCar.getModel());
             existingCar.setPrice(updatedCar.getPrice());
             existingCar.setMotorType(updatedCar.getMotorType());
             existingCar.setHorsePower(updatedCar.getHorsePower());
-
-            // Guardar los cambios en la base de datos
-            BbddInMemory.saveCar(existingCar);
         }
-
     }
-
 }
