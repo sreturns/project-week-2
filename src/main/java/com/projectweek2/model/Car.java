@@ -1,5 +1,7 @@
 package com.projectweek2.model;
 
+import java.util.Objects;
+
 public class Car {
 
     private static int count = 0;
@@ -22,6 +24,25 @@ public class Car {
         this.motorType = motorType;
         this.id = count;
         count++;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Car)) {
+            return false;
+        }
+        Car car = (Car) obj;
+        return id == car.id && brand.equals(car.brand) && model.equals(car.model)
+                && price == car.price && horsePower == car.horsePower
+                && motorType.equals(car.motorType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     public String getBrand() {
@@ -79,6 +100,5 @@ public class Car {
     public static void setCount(int count) {
         Car.count = count;
     }
-    
-}
 
+}

@@ -1,9 +1,6 @@
 package com.projectweek2.controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +35,7 @@ public class CarController {
 
     @GetMapping("/update/{id}")
     public String showUpdateCarForm(@PathVariable int id, Model model) {
-        // Aquí debes cargar los datos del automóvil con el ID proporcionado
+        // Aquí debes cargar los datos del coche con el ID proporcionado
         // desde la base de datos y agregarlos al modelo
         Car car = BbddInMemory.findById(id);
         model.addAttribute("car", car);
