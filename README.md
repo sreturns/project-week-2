@@ -24,14 +24,14 @@ Esta aplicación se ha hecho con la intención de ser ampliada a lo largo de las
 
 #### Get all items
 
-```http
+```
   GET /api/cars
 ```
 
 
 #### Get Car
 
-```http
+```
   GET /api/cars/${id}
 ```
 
@@ -41,7 +41,7 @@ Esta aplicación se ha hecho con la intención de ser ampliada a lo largo de las
 
 #### Add Car
 
-```http
+```
   POST /api/cars/add
 ```
 
@@ -51,7 +51,7 @@ Esta aplicación se ha hecho con la intención de ser ampliada a lo largo de las
 
 #### Update Car
 
-```http
+```
   POST /api/cars/update/${id}
 ```
 
@@ -61,7 +61,7 @@ Esta aplicación se ha hecho con la intención de ser ampliada a lo largo de las
 
 #### Delete Car
 
-```http
+```
   DELETE /api/cars/delete/${id}
 ```
 
@@ -71,7 +71,7 @@ Esta aplicación se ha hecho con la intención de ser ampliada a lo largo de las
 
 #### Get list Size
 
-```http
+```
   GET /api/cars/size
 ```
 
